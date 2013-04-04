@@ -21,11 +21,17 @@
         NSLog(@"With the \"kWSTimeUnitMillisecond + 1\" option 166.6667 = 1/60 (1 frame)");
         NSLog(@"This resolution is useful because it makes the cost of individual calls visible.");
     }];
+    
     NSLog(@"- Result: The previous log took this many 1/10,000th of seconds to complete: %f", executionTimeMilliPlus1);
     
     CFTimeInterval executionTimeNano = [self executionTime: kWSTimeUnitNanosecond block:^{}];
-    NSLog(@"- Result: I guess it takes this many Nanoseconds to call an empty block: %f", executionTimeNano);
+    NSLog(@"- Result: I guess it takes this many Nanoseconds to call an empty block: %0.0f", executionTimeNano);
     // Override point for customization after application launch.
+    
+    NSLog(@"You can log time like this: %f", [self executionTime: kWSTimeUnitSecond block:^{
+        NSLog(@"It's wierd I know.");
+    }]);
+    
     return YES;
 }
 

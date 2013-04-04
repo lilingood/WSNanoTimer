@@ -21,7 +21,7 @@ static uint64_t sTimebaseRatio;
     sTimebaseRatio = sTimebaseInfo.numer / sTimebaseInfo.denom;
 }
 
--(CFTimeInterval) executionTime: (WSTimeUnit) timeUnit block: (void (^)(void)) block {
+- (CFTimeInterval) executionTime: (WSTimeUnit) timeUnit block: (void (^)(void)) block {
     
     NSUInteger startTime = mach_absolute_time();
     
@@ -29,7 +29,6 @@ static uint64_t sTimebaseRatio;
     
     NSUInteger endTime = mach_absolute_time();
     
-    NSLog(@"Exponent: %f", pow(10, 9 - timeUnit));
     return (endTime - startTime) * sTimebaseRatio / pow(10, 9 - timeUnit);
 }
 
